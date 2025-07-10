@@ -8,14 +8,11 @@ class Solution {
             count[s.charAt(i) - 'a']++;
             count[t.charAt(i) - 'a']--;
         }
-
-        // If all counts are zero, they are anagrams
         for (int c : count) {
             if (c != 0) {
                 return false;
             }
         }
-
         return true;  
     }
 }
