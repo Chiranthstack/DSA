@@ -15,6 +15,6 @@ class Solution {
         // If no pair is found (shouldn't happen as per problem constraints)
         return new int[0];
     }
-}
+} 
 
 
