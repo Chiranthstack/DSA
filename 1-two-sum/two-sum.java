@@ -1,20 +1,20 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int n = nums.length;
-        
-        // Loop through each pair of elements
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                // If the pair sums to the target, return their indices
-                if (nums[i] + nums[j] == target) {
-                    return new int[] { i, j };
-                }
-            }
-        }
+     Map<Integer, Integer> map = new HashMap<>();
 
-        // If no pair is found (shouldn't happen as per problem constraints)
-        return new int[0];
+    for (int i = 0; i < nums.length; i++) {
+
+      // Get the complement using the target value
+      int complement = target - nums[i];
+
+      // Search the hashmap for complement, if found, we got our pair
+      if (map.containsKey(complement)) {
+        return new int[]{map.get(complement), i};
+      }
+
+      // Put the element in hashmap for subsequent searches.
+      map.put(nums[i], i);
     }
-} 
-
-
+    throw new IllegalArgumentException("No two sum solution");
+    }
+}
