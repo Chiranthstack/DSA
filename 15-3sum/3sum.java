@@ -1,42 +1,48 @@
+import java.util.*;
+
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        
-        if(nums.length <3 || nums==null){
-            return new ArrayList<>();
-        }
+
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-        for(int i=0; i<nums.length-2;i++){
-            int p1 = i+1;
-            int p2 = nums.length-1;
-            
-            while(p1<p2){
-                int sum = nums[i]+nums[p1]+nums[p2];
-                if(sum==0){
-                   
-                    result.add(Arrays.asList(nums[i],nums[p1],nums[p2]));
-                    while(p1<p2 && nums[p1]==nums[p1+1]){
-                        p1++;
-                    }
-                    while(p1<p2 && nums[p2] == nums[p2-1]){
-                        p2--;
-                    }
-                    p1++;
-                    p2--;
 
+        for (int i = 0; i < nums.length - 2; i++) {
+
+            // skip duplicate fixed elements
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int left = i + 1;
+            int right = nums.length - 1;
+
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+
+                    left++;
+                    right--;
+
+                    // skip duplicate left
+                    while (left < right && nums[left] == nums[left - 1]) {
+                        left++;
+                    }
+
+                    // skip duplicate right
+                    while (left < right && nums[right] == nums[right + 1]) {
+                        right--;
+                    }
+
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
                 }
-                else if(sum<0){
-                    p1++;
-                }
-                else if(sum>0){
-                    p2--;
-                }
-                while(i+1<nums.length && nums[i] == nums[i+1]){
-                    i++;
-                }
-                
             }
         }
+
         return result;
     }
 }
