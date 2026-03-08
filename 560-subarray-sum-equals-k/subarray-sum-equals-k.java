@@ -5,15 +5,13 @@ class Solution {
         int count=0;
         int prefix=0;
         for(int num:nums){
-            prefix += num;
+            prefix+=num;
             if(map.containsKey(prefix-k)){
-                count+=map.get(prefix-k);
-            }
-              map.put(prefix, map.getOrDefault(prefix, 0) + 1);
+            count+=map.get(prefix-k);
         }
-
-        return count;
-
+        map.put(prefix,map.getOrDefault(prefix,0)+1);
+    }
+    return count;
         
     }
 }
