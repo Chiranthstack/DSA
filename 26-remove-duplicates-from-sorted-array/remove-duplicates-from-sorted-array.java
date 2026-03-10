@@ -9,6 +9,6 @@ class Solution {
             }
         }
         return slow+1;
-       
+        
     }
 }
