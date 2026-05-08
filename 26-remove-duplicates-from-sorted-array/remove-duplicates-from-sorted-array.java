@@ -8,7 +8,6 @@ class Solution {
                 nums[slow]=nums[fast];
             }
         }
-        return slow+1;
-        
+        return slow+1;    
     }
 }
